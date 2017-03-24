@@ -94,7 +94,8 @@ class Transport extends MagentoTransport implements TransportInterface
         $builder = new MessageBuilder();
         $builder->setFromAddress($message['from']);
         $builder->setSubject($message['subject']);
-        foreach ($message['to'] as $to) {
+        //foreach ($message['to'] as $to) {
+        foreach ($this->message->getRecipients() as $to) {
             $builder->addToRecipient($to);
         }
 
